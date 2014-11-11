@@ -78,7 +78,7 @@ NUM=$(echo "$JSON" | jq '.Messages | length') \
     || die "failed to get number of messages from JSON: $JSON"
 
 ## Quit if no messages
-test "$NUM" -eq 0 && die "no pending messages";
+test -z $NUM && die "no pending messages";
 
 ## We expect exactly one message
 test "$NUM" -eq 1 \
